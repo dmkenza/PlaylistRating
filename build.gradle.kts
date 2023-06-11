@@ -16,6 +16,9 @@ repositories {
     maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     maven("https://jitpack.io")
 }
+
+
+
 kotlin {
     jvm {
         compilations.all {
@@ -25,14 +28,22 @@ kotlin {
     }
 
 
+
     sourceSets {
+
         val jvmMain by getting {
+
             dependencies {
                 implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
                 implementation(compose.desktop.currentOs)
+                implementation(compose.material)
+                implementation(compose.material3)
+                implementation(compose.materialIconsExtended)
 
                 implementation("org.chenliang.oggus:oggus:1.2.0")
                 implementation("com.google.code.gson:gson:2.7")
+                implementation("com.dorkbox:Notify:3.7")
+                implementation("com.lordcodes.turtle:turtle:0.8.0")
             }
         }
         val jvmTest by getting
@@ -57,3 +68,4 @@ compose.desktop {
         }
     }
 }
+
