@@ -37,13 +37,20 @@ kotlin {
                 implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
                 implementation(compose.desktop.currentOs)
                 implementation(compose.material)
-                implementation(compose.material3)
                 implementation(compose.materialIconsExtended)
+                implementation("commons-io:commons-io:2.13.0")
 
                 implementation("org.chenliang.oggus:oggus:1.2.0")
                 implementation("com.google.code.gson:gson:2.7")
                 implementation("com.dorkbox:Notify:3.7")
-                implementation("com.lordcodes.turtle:turtle:0.8.0")
+
+                implementation ("net.dv8tion:JDA:5.0.0-alpha.12")
+                implementation ("org.jetbrains.exposed:exposed-core:0.38.2")
+                implementation ("org.jetbrains.exposed:exposed-jdbc:0.38.2")
+                implementation ("org.xerial:sqlite-jdbc:3.36.0.3")
+
+                implementation ("com.github.Adonai:jaudiotagger:2.3.14")
+//                implementation("net.jthink:jaudiotagger:3.0.1")
             }
         }
         val jvmTest by getting

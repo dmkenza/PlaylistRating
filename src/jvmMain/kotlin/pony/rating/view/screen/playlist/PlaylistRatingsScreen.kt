@@ -1,4 +1,4 @@
-package pony.rating.view
+package pony.rating.view.screen.playlist
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -11,6 +11,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import pony.rating.view.PathsDropdownMenu
+import pony.rating.view.screen.Screen
 
 
 class PlaylistRatingsScreen : Screen {
@@ -47,7 +49,7 @@ class PlaylistRatingsScreen : Screen {
                 }
             )
 
-            if(phonePaths.paths.isNotEmpty()){
+            if (phonePaths.paths.isNotEmpty()) {
                 Box(
                     modifier = Modifier
                         .padding(8.dp)
@@ -55,8 +57,7 @@ class PlaylistRatingsScreen : Screen {
                 ) {
                     PathsDropdownMenu(phonePaths) { selectedPath ->
                         viewModel.onSdCardSelected(
-                            selectedPath,
-                            PlaylistRatingsScreenViewModel.EditTextField.OldPlaylist
+                            selectedPath, FieldType.OldPlaylist
                         )
                     }
                 }
@@ -79,7 +80,7 @@ class PlaylistRatingsScreen : Screen {
                 }
             )
 
-            if(phonePaths.paths.isNotEmpty()){
+            if (phonePaths.paths.isNotEmpty()) {
                 Box(
                     modifier = Modifier
                         .padding(8.dp)
@@ -88,7 +89,7 @@ class PlaylistRatingsScreen : Screen {
                     PathsDropdownMenu(phonePaths) { selectedPath ->
                         viewModel.onSdCardSelected(
                             selectedPath,
-                            PlaylistRatingsScreenViewModel.EditTextField.NewPlaylist
+                            FieldType.NewPlaylist
                         )
                     }
                 }

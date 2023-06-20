@@ -1,7 +1,9 @@
 package pony.rating
 
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
+import okhttp3.internal.wait
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
@@ -42,14 +44,17 @@ object CommandExecutor {
         }
     }
 
-    private suspend fun executeCommand(cmd: Command) = withContext(Dispatchers.IO) {
-        val (workingFolder, exeFile, args) = cmd
+    suspend fun executeCommand(cmd: Command) = withContext(Dispatchers.IO) {
+        var (workingFolder, exeFile, args) = cmd
 //        val workingFolder = "C:\\projects\\PlaylistRating\\adb\\"
         val sb = StringBuilder()
 
+        args = args.replace("  ", "")
         val process = ProcessBuilder(
             workingFolder + exeFile,
-            * args.split(" ").toTypedArray()
+            * args.split(" ").map {
+                it.replace("%20", " ")
+            }.toTypedArray()
         ).apply {
             redirectErrorStream(true)
         }.start().apply {
@@ -57,6 +62,8 @@ object CommandExecutor {
             var line: String?
             while (out.readLine().also { line = it } != null) {
                 sb.append(line + "\n")
+                println(line)
+               delay(10)
             }
             waitFor()
         }

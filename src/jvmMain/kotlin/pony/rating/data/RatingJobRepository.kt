@@ -6,7 +6,6 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import pony.rating.ConfigData
 import pony.rating.di.scope
-import pony.rating.isPhonePath
 import pony.rating.tools.findSongPath
 import pony.rating.tools.readRatingFromAudioFile
 import java.io.File
@@ -129,6 +128,11 @@ class RatingJobRepository {
         val text = sb.toString()
 
         return text to fails
+    }
+
+    fun String.isPhonePath(): Boolean {
+        val path = this
+        return (path.startsWith("/storage/") || path.startsWith("/sdcard/") || path.startsWith("/mnt/"))
     }
 
     data class FailsInfoData(

@@ -1,4 +1,4 @@
-package pony.rating.view
+package pony.rating.view.screen
 
 import androidx.compose.runtime.Composable
 

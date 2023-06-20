@@ -18,6 +18,7 @@ class PhonePathsRepository() {
         scope.launch {
             while (true) {
                 try {
+                    return@launch
                     start()
                 } catch (e: Throwable) {
                     e.printStackTrace()

@@ -13,12 +13,12 @@ import java.io.File
 
 
 fun String.findSongPath(): String? {
-    val regex = "([^/])*/([^/])*/([^/])*([.])([^/])*".toRegex()
+    val regex = "([^/])*/([^/])*/([^/])*([.])([^/])*$".toRegex()
     return regex.find(this)?.groupValues?.firstOrNull()
 }
 
 
-private fun File.readRatingMp3(): Int {
+fun File.readRatingMp3(): Int {
     return AudioFileIO.read(this).run {
         tag.getFirst(FieldKey.RATING)
             .toIntOrNull()
@@ -27,22 +27,14 @@ private fun File.readRatingMp3(): Int {
     }
 }
 
-private fun File.readRatingOgg(): Int {
-    val inputStream = inputStream()
-    val opus = OggOpusStream.from(inputStream)
-    return opus.run {
-        val rating = commentHeader.tags
-            .get("RATING")
-            ?.stream()
-            ?.toList()
-            ?.firstOrNull()
-            ?.toInt()?.run {
+fun File.readRatingOgg(): Int {
+    return AudioFileIO.read(this).run {
+        tag.getFirst(FieldKey.RATING)
+            .toIntOrNull()
+            ?.run {
                 this / 20
-            } ?: 0
-        runCatching {
-            inputStream.close()
-        }
-        rating
+            }
+            ?: 0
     }
 }
 
