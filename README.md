@@ -5,4 +5,4 @@ https://forum.powerampapp.com/topic/21099-will-not-recognize-ratings-tags/?do=fi
 
 This app fill m3u8 playlist by ratings storing in audio files.
 
-Note: make sure PA Settings > Library > Playlists > Import Ratings is enabled.
+Make sure PA Settings > Library > Playlists > Import Ratings is enabled.
