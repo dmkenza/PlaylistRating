@@ -17,41 +17,43 @@ class NavigationScreen : Screen {
 
     val screens = listOf(
         "Playlist Rate" to PlaylistRatingsScreen(),
-        "Poweramp Sync" to BackSyncScreen()
+//        "Poweramp Sync" to BackSyncScreen()
     )
 
     @Composable
     override fun renderUI() {
-        var tabIndex by remember { mutableStateOf(1) }
+        var tabIndex by remember { mutableStateOf(0) }
         val tabs = remember {
             screens.map { it.first }
         }
 
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
+//        Column(
+//            modifier = Modifier
+//                .fillMaxWidth()
+//
+//        ) {
+//            Row(
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .background(MaterialTheme.colors.primarySurface)
+//            ) {
+//                TabRow(
+//                    modifier = Modifier.fillMaxWidth(0.4f),
+//                    selectedTabIndex = tabIndex
+//                ) {
+//                    tabs.forEachIndexed { index, title ->
+//                        Tab(text = { Text(title) },
+//                            selected = tabIndex == index,
+//                            onClick = { tabIndex = index }
+//                        )
+//                    }
+//                }
+//            }
+//
+//            screens.getOrNull(tabIndex)?.second?.renderUI()
+//        }
 
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(MaterialTheme.colors.primarySurface)
-            ) {
-                TabRow(
-                    modifier = Modifier.fillMaxWidth(0.4f),
-                    selectedTabIndex = tabIndex
-                ) {
-                    tabs.forEachIndexed { index, title ->
-                        Tab(text = { Text(title) },
-                            selected = tabIndex == index,
-                            onClick = { tabIndex = index }
-                        )
-                    }
-                }
-            }
-
-            screens.getOrNull(tabIndex)?.second?.renderUI()
-        }
+        screens.getOrNull(tabIndex)?.second?.renderUI()
     }
 }
 

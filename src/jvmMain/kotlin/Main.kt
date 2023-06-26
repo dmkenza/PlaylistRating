@@ -260,7 +260,7 @@ fun App() {
 
     val screen = NavigationScreen()
 
-    test1()
+    //test1()
     MaterialTheme {
         screen.renderUI()
     }
@@ -268,9 +268,9 @@ fun App() {
 
 //#EXT-X-RATING:5
 fun main() = application {
-    System.out.println("Hello World!");
+//    System.out.println("Hello World!");
     Window(
-        title = "Playlist Rating",
+        title = "Playlist Rating by DmitryKenza",
         icon = painterResource("ic_luna.svg"),
         onCloseRequest = ::exitApplication
     ) {
