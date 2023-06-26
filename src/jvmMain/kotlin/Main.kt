@@ -42,10 +42,10 @@ object Tracks : Table() {
 
 
 val listMusicToCutting = listOf<Triple<String, String, String>> (
-
-//    Triple("C:\\Users\\Dmitry\\Downloads\\H8 Seed - Daring Mare (Likonan Remix).mp3",
+//
+//    Triple("C:\\Users\\Dmitry\\Music\\MusicBee\\Music\\Orchestral Design\\Unknown Album\\Orchestral Design - A day of Crusading.opus",
 //        "0:00.000",
-//        "4:08.500"
+//        "1:58.000"
 //    ),
 
 
